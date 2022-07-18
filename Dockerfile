@@ -20,10 +20,10 @@ RUN groupadd -g 10000 slapd \
       /run/slapd \
       /var/lib/ldap
 
-COPY --chown=root:root docker-entrypoint.sh /usr/local/sbin/
+COPY --chown=root:root docker-entrypoint.sh /usr/local/bin/
 COPY --chown=root:root schema /etc/ldap/schema/
 
-ENTRYPOINT ["/usr/local/sbin/docker-entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 CMD ["/usr/sbin/slapd", "-d", "none", "-F", "/etc/ldap/slapd.d", "-h", "ldapi:///"]
 
